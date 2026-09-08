@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>停车月卡管理系统 - 行车管理</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="topbar">
+        <div class="logo">🚗 智慧停车月卡管理系统</div>
+        <nav>
+            <a href="index.html">工作台首页</a>
+            <a href="monthCard.html">月卡管理</a>
+            <a href="addMonthCard.html">新增月卡</a>
+        </nav>
+    </header>
+
+    <!-- 导航栏下方：侧边栏 + 内容区 -->
+    <div class="below">
+        <!-- 左侧边栏 -->
+        <div class="sidebar-box">
+            <div class="LiterA">HEIMAZS</div>
+            <ul class="sidebar">
+                <li><a href="index.html">🪄工作台</a></li>
+            <li><a href="park.html">🌲园区管理</a></li>
+            <li><a href="traffic.html" class="active">🤖行车管理</a></li>
+            <li><a href="property.html">🏫物业费管理</a></li>
+            <li><a href="unified.html">📑一体管理</a></li>
+            <li><a href="system.html">📈系统管理</a></li>
+            </ul>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <main class="content">
+            <!-- 大卡片：顶部是搜索行，下面留给表格 -->
+            <div class="card card-lg">
+                <div class="trafficContent">
+                    <div class="field">
+                        <label>车主姓名:</label>
+                        <input type="text" placeholder="请输入内容">
+                    </div>
+                    <div class="field">
+                        <label>车牌号码:</label>
+                        <input type="text" placeholder="请输入内容">
+                    </div>
+                    <div class="field">
+                        <label>状态:</label>
+                        <input type="text" placeholder="请输入内容">
+                    </div>
+
+                    <button class="btn btn-blue">查询</button>
+                    <button class="btn btn-red">重置</button> 
+                    
+                </div>
+                <!-- 工具栏：批量删除在左，添加月卡靠右 -->
+                <div class="toolbar">
+                    <button class="btn btn-gray">批量删除</button>
+                    <a href="addMonthCard.html" class="btn btn-blue push-right">添加月卡</a>
+                </div>
+
+                <!-- 通行记录表格 -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>车主姓名</th>
+                            <th>联系方式</th>
+                            <th>车牌号码</th>
+                            <th>车辆品牌</th>
+                            <th>剩余有效天数</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <!-- 数据行以后放这里：<tr><td>...</td></tr> -->
+                    </tbody>
+                </table>
+                </div>
+
+                <!-- 这里以后放车辆通行记录表格 -->
+                 
+            
+        </main>
+    </div>
+</body>
+</html>

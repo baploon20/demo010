@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>停车月卡管理系统 - 月卡管理</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <header class="topbar">
+        <div class="logo">🚗 智慧停车月卡管理系统</div>
+        <nav>
+            <a href="index.html">工作台首页</a>
+            <a href="monthCard.html" class="active">月卡管理</a>
+            <a href="addMonthCard.html">新增月卡</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="page-title">月卡管理</h2>
+
+        <!-- 查询筛选区域 + 操作按钮 -->
+        <section class="panel toolbar">
+            <div class="filter-group">
+                <input type="text" id="qPlateNo" placeholder="请输入车牌号关键字">
+                <select id="qStatus">
+                    <option value="">全部状态</option>
+                    <option value="0">可用</option>
+                    <option value="1">已过期</option>
+                </select>
+                <button type="button" class="btn btn-primary" id="btnQuery">查询</button>
+                <button type="button" class="btn" id="btnReset">重置</button>
+            </div>
+            <div class="action-group">
+                <button type="button" class="btn btn-danger" id="btnBatchDelete">批量删除</button>
+                <button type="button" class="btn btn-primary" id="btnAdd">+ 添加月卡</button>
+            </div>
+        </section>
+
+        <!-- 月卡列表表格 + 分页组件 -->
+        <section class="panel">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="checkAll" title="全选"></th>
+                            <th>车牌号</th>
+                            <th>车主姓名</th>
+                            <th>手机号</th>
+                            <th>车辆类型</th>
+                            <th>卡类型</th>
+                            <th>缴费金额（元）</th>
+                            <th>开始日期</th>
+                            <th>结束日期</th>
+                            <th>剩余有效天数</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- 表格数据由 js/monthCard.js 的 renderTable() 动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分页组件 -->
+            <div class="pagination">
+                <span class="pagination-total">共 <b id="totalCount">0</b> 条记录</span>
+                <div class="pagination-controls">
+                    <select id="pageSizeSelect">
+                        <option value="5" selected>5 条/页</option>
+                        <option value="10">10 条/页</option>
+                    </select>
+                    <button type="button" class="btn" id="btnPrev">上一页</button>
+                    <span id="pageInfo">第 1 / 1 页</span>
+                    <button type="button" class="btn" id="btnNext">下一页</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 弹窗：查看 / 编辑 / 续费 三种模式共用 -->
+    <div class="modal-mask" id="modalMask" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">查看月卡</h3>
+                <button type="button" class="modal-close" id="btnModalClose" title="关闭">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="form-item">
+                        <label>记录ID</label>
+                        <input id="m-id" disabled>
+                    </div>
+                    <div class="form-item">
+                        <label>车牌号 <em>*</em></label>
+                        <input id="m-plateNo" placeholder="例：粤A12345">
+                        <span class="error-msg" id="err-m-plateNo"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>车主姓名 <em>*</em></label>
+                        <input id="m-ownerName" placeholder="请输入车主姓名">
+                        <span class="error-msg" id="err-m-ownerName"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>手机号 <em>*</em></label>
+                        <input id="m-phone" maxlength="11" placeholder="请输入 11 位手机号">
+                        <span class="error-msg" id="err-m-phone"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>车辆类型 <em>*</em></label>
+                        <select id="m-vehicleType">
+                            <option value="">请选择</option>
+                            <option>小型汽车</option>
+                            <option>大型汽车</option>
+                            <option>新能源车</option>
+                        </select>
+                        <span class="error-msg" id="err-m-vehicleType"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>卡类型 <em>*</em></label>
+                        <select id="m-cardType">
+                            <option value="">请选择</option>
+                            <option>月卡</option>
+                            <option>季卡</option>
+                            <option>半年卡</option>
+                            <option>年卡</option>
+                        </select>
+                        <span class="error-msg" id="err-m-cardType"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>缴费金额（元）<em>*</em></label>
+                        <input id="m-payAmount" placeholder="请输入缴费金额">
+                        <span class="error-msg" id="err-m-payAmount"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>开始日期 <em>*</em></label>
+                        <input type="date" id="m-startDate">
+                        <span class="error-msg" id="err-m-startDate"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>结束日期 <em>*</em></label>
+                        <input type="date" id="m-endDate">
+                        <span class="error-msg" id="err-m-endDate"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>剩余有效天数（天）</label>
+                        <input id="m-remainDay" placeholder="自动计算，可手动修改">
+                        <span class="error-msg" id="err-m-remainDay"></span>
+                    </div>
+                    <div class="form-item">
+                        <label>状态</label>
+                        <select id="m-status">
+                            <option value="0">可用</option>
+                            <option value="1">已过期</option>
+                        </select>
+                        <span class="error-msg" id="err-m-status"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" id="btnModalCancel">关闭</button>
+                <button type="button" class="btn btn-primary" id="btnModalSave">保存</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
