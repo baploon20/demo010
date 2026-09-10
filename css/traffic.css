@@ -1,0 +1,97 @@
+/*  行车管理：搜索卡片  */
+.trafficContent {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;       /* 窗口变窄时搜索项自动换行 */
+    margin-bottom: 24px;   /* 和下面的表格区拉开距离 */
+}
+
+/* 一个"标签+输入框"的组合：标签在左、输入框在右 */
+.field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.field label {
+    font-size: 14px;
+    color: #1a1717;
+}
+
+/*  按钮 */
+/* 按钮底座：通用外观。默认就是"白底灰边"的次要按钮，
+   所以 重置/上一页/关闭 这类按钮只挂 .btn 就够 */
+.btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;  /* 针对 a 去掉下划线 */
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #fff;
+    color: #555;
+}
+
+.btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 彩色按钮的公共部分：去边框、白字 */
+.btn-blue, .btn-gray, .btn-red, .btn-primary, .btn-danger {
+    border: none;
+    color: #fff;
+}
+
+/* 蓝色（主操作）：btn-blue 和 btn-primary 是同一个蓝色的两个名字 */
+.btn-blue, .btn-primary {
+    background-color: #0d6efd;
+}
+
+.btn-blue:hover, .btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* 灰色（次要操作） */
+
+
+
+
+/* 红色（危险操作：删除等） */
+.btn-red, .btn-danger {
+    background-color: #e32828;
+}
+
+.btn-red:hover, .btn-danger:hover {
+    background-color: #c02020;
+}
+
+/* flex 行里推到最右端 */
+.push-right {
+    margin-left: auto;
+}
+/*  数据表格  */
+.data-table {
+    width: 100%;                 /* 占满卡片宽度 */
+    border-collapse: collapse;   /* 相邻单元格的边框合并成一条线 */
+    table-layout: fixed;         /* 8 列等宽平分，不受内容长短影响 */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 16px;          /* 格子里文字的呼吸空间 */
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+    background-color: #f5f6f8;   /* 表头浅灰底 */
+    color: #333;
+}
+
+/*  表格上方的工具栏  */
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}

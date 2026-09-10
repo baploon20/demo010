@@ -1,0 +1,197 @@
+/*  月卡管理页 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.container .page-title {
+    margin-bottom: 20px;
+}
+
+/* 面板式工具栏：筛选在左、操作在右 */
+.panel.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filter-group,
+.action-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 表格容器：12 列太宽时横向滚动，不撑破卡片 */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table-wrap th,
+.table-wrap td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;   /* 单元格文字不换行 */
+}
+
+.table-wrap th {
+    background-color: #f5f6f8;
+    color: #333;
+}
+
+.table-wrap tbody tr:hover {
+    background-color: #f8f9fa;  /* 整行悬停高亮 */
+}
+
+/* 分页组件 */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #555;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination-total b {
+    color: #333;
+}
+
+/*  弹窗（modal）  */
+/* 半透明遮罩：fixed 定位盖住整个视口，弹窗在视口居中 */
+.modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* 关键：hidden 属性的"不显示"会被上面的 display:flex 覆盖，
+   必须写回一条显式规则，弹窗才能默认隐藏 */
+.modal-mask[hidden] {
+    display: none;
+}
+
+.modal {
+    width: 640px;
+    max-width: 90vw;      /* 小屏幕时不超过屏宽的 90% */
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.modal-close {
+    border: none;
+    background: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #999;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;   /* 表单太长时弹窗内部滚动 */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+}
+/* 查询和重置按钮 */
+#btnQuery {
+  background-color: #1677ff;      /* 蓝色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+#btnReset {
+  background-color: #ff4d4f;      /* 红色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+/* 批量删除和添加月卡按钮 */
+#btnAdd {
+  background-color: #1677ff;      /* 蓝色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+#btnBatchDelete {
+  background-color: #ff4d4f;      /* 红色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+#btnQuery:hover {
+  background-color: #4096ff;   /* 蓝色加深 */
+}
+
+#btnReset:hover {
+  background-color: #ff7875;   /* 红色变浅 */
+}
+#btnAdd:hover {
+  background-color: #4096ff;   /* 蓝色加深 */
+}
+
+#btnBactchDelete:hover {
+  background-color: #ff7875;   /* 红色变浅 */
+}

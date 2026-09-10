@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>停车月卡管理系统 - 新增月卡</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/addMonthCard.css">
 </head>
 <body>
+     <header class="topbar">
+        <div class="logo">🚗 智慧停车月卡管理系统</div>
+        <nav>
+            <a href="index.html">工作台首页</a>
+            <a href="monthCard.html" class="">月卡管理</a>
+            <a href="addMonthCard.html">新增月卡</a>
+        </nav>
+    </header>
     <div class="form-page">
         <div class="page-head">
             <button type="button" class="btn btn-outline" id="btnBack">← 返回月卡管理</button>
@@ -91,13 +100,13 @@
 
             <!-- 底部操作按钮 -->
             <div class="form-actions">
-                <button type="submit" class="btn btn-blue">保存</button>
-                <button type="button" class="btn btn-gray">取消</button>
+                <button type="submit" class="btn btn-blue" id="btnSubmit">保存</button>
+                <button type="button" class="btn btn-gray" id="btnCancel">取消</button>
             </div>
         </form>
     </div>
 
-    <!-- 脚本放在 body 末尾：等页面元素全部"出生"后再执行 -->
+    
     <script src="js/indexScript.js"></script>
 </body>
 </html>

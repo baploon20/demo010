@@ -1,0 +1,144 @@
+/*  表单页（新增月卡等） */
+.form-page {
+    min-height: 100vh;
+    background-color: #f4f5f7;
+    padding: 24px;
+}
+
+/* 页头：返回按钮 + 标题，居中限宽 */
+.page-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.page-title {
+    margin: 0;
+    color: #2e2b2b;
+}
+
+/* 表单卡片 */
+.form-card {
+    max-width: 800px;
+    margin: 0 auto 20px;   /* 水平居中，卡片之间留间距 */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-card-title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    color: #333;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;  /* 标题下的分隔线 */
+}
+
+/* 表单栅格：CSS Grid 两列 */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 两列等宽 */
+    gap: 16px 24px;                  /* 行距 16px，列距 24px */
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-item label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* 必填的红色星号 */
+.form-item label em {
+    color: #e32828;
+    font-style: normal;   /* em 默认斜体，星号不需要斜 */
+}
+
+
+/* 只读 / 禁用输入框：浅灰底，暗示"不可编辑" */
+.form-item input[readonly],
+.form-item input[disabled] {
+    background-color: #f5f6f8;
+    color: #888;
+}
+
+/* 错误提示：平时空着但占住高度，出错时填字不会引起布局跳动 */
+.error-msg {
+    min-height: 16px;
+    font-size: 12px;
+    color: #e32828;
+}
+
+/* 底部按钮行 */
+.form-actions {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/*  通用输入控件：文本框 / 日期框 / 下拉框  */
+/* 按"类型"精筛：input[type="text"] 只命中文本框，不会误伤 checkbox */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #04aa6d;
+}
+
+/* 返回月卡管理按钮 */
+#btnBack {
+  background-color: #1677ff;      /* 蓝色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+#btnBack:hover {
+  background-color: #4096ff;   /* 蓝色加深 */
+}
+/* 保存按钮 */
+#btnSubmit {
+  background-color: #1677ff;      /* 蓝色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+#btnSubmit:hover {
+  background-color: #4096ff;   /* 蓝色加深 */
+}
+/* 取消按钮 */
+#btnCancel {
+  background-color: #ff4d4f;      /* 红色 */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+#btnCancel:hover {
+  background-color: #ff7875;   /* 红色变浅 */
+}
