@@ -37,3 +37,6 @@ document.getElementById('btnReset').addEventListener('click', function () {
     document.getElementById('qStatus').value = '';    
     renderTable(allCards);                            
 });
+
+
+
