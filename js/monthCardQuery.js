@@ -20,7 +20,7 @@ function renderTable(list) {
             + '<td>' + c.endDate + '</td>'
             + '<td>' + c.remainDay + '</td>'
             + '<td>' + c.status + '</td>'
-            + '<td></td>'
+            + '<td><button data-plate="' + c.plateNo + '" style="background:#ff4d4f;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer">删除</button></td>'
             + '</tr>';
     }
     document.getElementById('tbody').innerHTML = html;

@@ -86,7 +86,7 @@
 }
 
 /*  通用输入控件：文本框 / 日期框 / 下拉框  */
-/* 按"类型"精筛：input[type="text"] 只命中文本框，不会误伤 checkbox */
+/* 按"类型"精筛：input[type="text"] 只命中文本框 */
 input[type="text"],
 input[type="date"],
 input[type="number"],
